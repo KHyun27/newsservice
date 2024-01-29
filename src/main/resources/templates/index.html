@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: head('뉴스')}">
+</head>
+<body>
+    <header th:replace="~{layout :: nav_bar}"></header>
+
+    <h1 th:text="${nick_name}"></h1>
+    <!--변수${}, url@{}, block~{}-->
+
+    <footer th:replace="~{layout :: footer}">
+    <div th:replace="~{layout :: btscript}"></div>
+</body>
+</html>
