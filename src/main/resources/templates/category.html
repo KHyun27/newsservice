@@ -5,6 +5,29 @@
 <body>
     <header th:replace="~{layout :: nav_bar}"></header>
 
+    <!--내용-->
+    <main class="container d-flex flex-column">
+        <div class="m-3 p-3 d-flex flex-row justify-content-between">
+            <div>
+                <span class="fs-4"><strong>카테고리</strong></span>
+            </div>
+            <a th:href="@{/categoryInput}" class="btn btn-outline-primary">카테고리 입력</a>
+        </div>
+        <div><hr></div>
+        <div class="d-flex flex-row">
+            <div class="col-1 fs-6 fw-semibold" th:text="No."></div>
+            <div class="col-3 fs-6 fw-semibold" th:text="'카테고리 명'"></div>
+            <div class="col-3 fs-6 fw-semibold" th:text="'카테고리 코드'"></div>
+            <div class="col-5 fs-6 fw-semibold" th:text="'카테고리 설명'"></div>
+        </div>
+        <div><hr></div>
+        <div class="d-flex flex-row p-1" th:each="category : ${categories}">
+            <div class="col-1 fs-6" th:text="${category.id}"></div>
+            <div class="col-3 fs-6" th:text="${category.ct_name}"></div>
+            <div class="col-3 fs-6" th:text="${category.ct_code}"></div>
+            <div class="col-5 fs-6" th:text="${category.ct_desc}"></div>
+        </div>
+    </main>
 
     <footer th:replace="~{layout :: footer}">
     <div th:replace="~{layout :: btscript}"></div>

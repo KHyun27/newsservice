@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
-
 public class CategoryDTO {
     private Long id;
     private String ct_code;

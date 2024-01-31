@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: head('국가코드 입력')}">
+</head>
+<body>
+<header th:replace="~{layout :: nav_bar}"></header>
+
+<main class="container d-flex flex-column">
+    <div class="m-3 p-3">
+        <span class="fs-4"><strong>국가코드 입력</strong></span>
+    </div>
+    <div><hr></div>
+    <form th:action="@{/countrySave}" class="d-flex flex-column" method="post">
+        <div class="col-6 mb-3">
+            <label for="country-code" class="form-label">국가 코드</label>
+            <input class="form-control" type="text" id="country-code" name="countryCode" placeholder="국가 코드" required>
+        </div>
+
+        <div class="col-6 mb-3">
+            <label for="country-name" class="form-label">카테고리 명</label>
+            <input class="form-control" type="text" id="country-name" name="countryName" placeholder="국가 이름" required>
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-outline-primary" type="submit">저장</button>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{layout :: footer}">
+    <div th:replace="~{layout :: btscript}"></div>
+</body>
+</html>

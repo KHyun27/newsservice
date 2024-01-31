@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: head('카데고리 입력')}">
+</head>
+<body>
+    <header th:replace="~{layout :: nav_bar}"></header>
+
+    <main class="container d-flex flex-column">
+        <div class="m-3 p-3">
+            <span class="fs-4"><strong>카테고리 입력</strong></span>
+        </div>
+        <div><hr></div>
+        <form th:action="@{/categorySave}" class="d-flex flex-column" method="post">
+            <div class="col-6 mb-3">
+                <label for="category-code" class="form-label">카테고리 코드</label>
+                <input class="form-control" type="text" id="category-code" name="categoryCode" placeholder="카테고리 코드" required>
+            </div>
+
+            <div class="col-6 mb-3">
+                <label for="category-name" class="form-label">카테고리 명</label>
+                <input class="form-control" type="text" id="category-name" name="categoryName" placeholder="카테고리 이름" required>
+            </div>
+
+            <div class="col-6 mb-3">
+                <label for="category-desc" class="form-label">카테고리 설명</label>
+                <input class="form-control" type="text" id="category-desc" name="categoryDesc" placeholder="카테고리 설명">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-outline-primary" type="submit">저장</button>
+            </div>
+        </form>
+    </main>
+
+    <footer th:replace="~{layout :: footer}">
+    <div th:replace="~{layout :: btscript}"></div>
+</body>
+</html>

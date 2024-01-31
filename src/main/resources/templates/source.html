@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{layout :: head('소스')}">
+</head>
+<body>
+<header th:replace="~{layout :: nav_bar}"></header>
+
+<!--내용-->
+    <main class="container d-flex flex-column">
+        <div class="m-3 p-3 d-flex flex-row justify-content-between">
+            <div>
+                <span class="fs-4"><strong>출처</strong></span>
+            </div>
+        </div>
+        <div><hr></div>
+        <div class="d-flex flex-row">
+            <div class="col-1 fs-6 fw-semibold" th:text="No."></div>
+            <div class="col-3 fs-6 fw-semibold" th:text="'출처 ID'"></div>
+            <div class="col-5 fs-6 fw-semibold" th:text="'출처'"></div>
+        </div>
+        <div><hr></div>
+        <div class="d-flex flex-row p-1" th:each="source : ${sources}">
+            <div class="col-1 fs-6" th:text="${source.id}"></div>
+            <div class="col-3 fs-6" th:text="${source.s_id}"></div>
+            <div class="col-5 fs-6" th:text="${source.s_name}"></div>
+        </div>
+    </main>
+
+    <footer th:replace="~{layout :: footer}">
+        <div th:replace="~{layout :: btscript}"></div>
+</body>
+</html>
