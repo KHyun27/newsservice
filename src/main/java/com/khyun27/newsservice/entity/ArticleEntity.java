@@ -32,11 +32,11 @@ public class ArticleEntity {
     @Builder.Default
     private String description = "";
 
-    @Column(length = 500)
+    @Column(length = 2048)
     @Builder.Default
     private String url = "";
 
-    @Column(length = 500)
+    @Column(length = 2048)
     @Builder.Default
     private String urlToImage = "";
 

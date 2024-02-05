@@ -25,48 +25,62 @@ public class NewsController {
     public String newsMain(Model model) {
         model.addAttribute("nick_name", "khyun27");
 
-        return "/index";
+        return "redirect:/articles" ;
     }
 
     @GetMapping("/articles")
     public String articles(Model model, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
 
+        System.out.println("page = " + page + "size = " + size);
+
         try {
             Page<ArticleEntity> articles = newsService.findAll(page, size);
+            // 디버깅
+            // for (ArticleEntity a : articles) {
+            //     System.out.println(a.getUrl());
+            //     System.out.println(a.getUrlToImage());
+            // }
 
+            int currentPage = articles.getNumber(); // 현재 페이지 번호
+            int startPage = (currentPage / size) * 10;
+            int endPage = Math.min(articles.getTotalPages() - 1, startPage + 9);
 
+            model.addAttribute("nick_name", "khyun27");
+            model.addAttribute("articles", articles);
+            model.addAttribute("startPage", startPage);
+            model.addAttribute("endPage", endPage);
 
         } catch (Exception e) {
-            model.addAttribute("message",e.getMessage());
-            return "/error";
+            model.addAttribute("message", e.getMessage());
+            return "/error" ;
         }
-        return "/index";
+        return "/index" ;
     }
 
     @GetMapping("/category")
     public String getCategories(Model model) {
         List<CategoryDTO> categories = newsService.findAllCategories();
         model.addAttribute("categories", categories);
-        return "/category";
+        return "/category" ;
     }
 
     @GetMapping("/country")
     public String getCountries(Model model) {
         List<CountryDTO> countries = newsService.findAllCountries();
         model.addAttribute("countries", countries);
-        return "/country";
+        return "/country" ;
     }
 
     @GetMapping("/source")
     public String getSources(Model model) {
         List<SourceDTO> sources = newsService.findAllSources();
         model.addAttribute("sources", sources);
-        return "/source";
+        return "/source" ;
     }
 
     @GetMapping("/categoryInput")
     public String inputCategory() {
-        return "category_input";
+        return "category_input" ;
     }
 
     @PostMapping("/categorySave")
@@ -83,11 +97,11 @@ public class NewsController {
         CategoryDTO saved = newsService.saveCategory(category);
         System.out.println(saved);
 
-        return "redirect:/category";
+        return "redirect:/category" ;
     }
 
     @GetMapping("/countryInput")
     public String inputCountry() {
-        return "country_input";
+        return "country_input" ;
     }
 }

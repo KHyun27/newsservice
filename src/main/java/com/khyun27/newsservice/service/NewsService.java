@@ -78,4 +78,12 @@ public class NewsService {
 
         return CategoryDTO.fromCategoryEntity(saved);
     }
+
+    public Page<ArticleEntity> findCategoryAndTitleOrDescription(Long categoryId, String titleKeyword, String descKeyword, int page, int size) {
+
+        if (categoryId == 0) {
+            return articleRepository.findByTitleOrDescription(titleKeyword, descKeyword, PageRequest.of(page, size, Sort.by("publishedAt").descending()));
+        }
+        return articleRepository.findByCategoryAndTitleOrDescription(categoryId, titleKeyword, descKeyword, PageRequest.of(page, size, Sort.by("publishedAt").descending()));
+    }
 }

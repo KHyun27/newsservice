@@ -8,7 +8,7 @@ spring:
 
   output:
     ansi:
-      enable: always
+      enabled: always
 
   datasource:
     url: jdbc:mysql://localhost:3306/my_news?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
@@ -17,10 +17,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    show-sql: true
     open-in-view: false
     hibernate:
       ddl-auto: update
-      show-sql: true
       properties:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
